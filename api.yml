@@ -1,7 +1,16 @@
 version: "3.8"
+
 services:
-  api_postgres:
-    container_name: api_postgres
+  ml_web_server:
+    container_name: ml_server.api
+    image: shrigorevich/mlserver:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development.Docker
+    ports:
+      - "9001:80"
+
+  db_postgres:
+    container_name: db_postgres
     image: postgres
     restart: always
     ports:

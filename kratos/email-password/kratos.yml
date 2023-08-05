@@ -7,6 +7,23 @@ serve:
     base_url: http://127.0.0.1:4433/
     cors:
       enabled: true
+      allowed_origins:
+        - http://*:3000
+        - http://localhost:3000
+        - http://host.docker.local:3000
+      allowed_methods:
+        - POST
+        - GET
+        - PUT
+        - PATCH
+        - DELETE
+      allowed_headers:
+        - Authorization
+        - Cookie
+        - Content-Type
+      exposed_headers:
+        - Content-Type
+        - Set-Cookie
   admin:
     base_url: http://kratos:4434/
 
@@ -46,7 +63,7 @@ selfservice:
     verification:
       enabled: true
       ui_url: http://127.0.0.1:4455/verification
-      use: code
+      use: link
       after:
         default_browser_return_url: http://127.0.0.1:4455/
 
@@ -94,4 +111,6 @@ identity:
 
 courier:
   smtp:
-    connection_uri: smtps://test:test@mailslurper:1025/?skip_ssl_verify=true
+    from_name: shrigorevich
+    connection_uri: smtp://medievalvalley@gmail.com:zqcyojmrmvofqmfm@smtp.gmail.com:587/
+    # connection_uri: smtps://test:test@mailslurper:1025/?skip_ssl_verify=true&legacy_ssl=true
