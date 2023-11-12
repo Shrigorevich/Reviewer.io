@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS translation (
     PRIMARY KEY (content_id, lang_id)
 );
 
-CREATE INDEX translation_idx ON translation (content_id, lang_id);
+CREATE INDEX IF NOT EXISTS translation_idx ON translation (content_id, lang_id);
 
 CREATE TABLE IF NOT EXISTS category (
     id INT PRIMARY KEY,
@@ -147,4 +147,7 @@ CREATE TABLE IF NOT EXISTS note_tag (
     PRIMARY KEY (tag_id, note_id)
 );
 
+-- test data --
+insert into language (id, name, code) values (1, 'english', 'en');
 
+-- precedures -- 
